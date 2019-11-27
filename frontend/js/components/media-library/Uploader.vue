@@ -154,6 +154,10 @@
         this.unique_folder_name = this.uploaderConfig.endpointRoot + (this.unique_folder_name || qq.getUniqueId())
         this._uploader.methods.setParams({ unique_folder_name: this.unique_folder_name }, id)
 
+        if (this.uploaderConfig.endpointType === 's3' && this.uploaderConfig.acl === 'public-read') {
+          this._uploader.methods.setParams({ 'Content-Disposition': 'attachment;filename=' + name }, id)
+        }
+
         // determine the image dimensions and add it to params sent on upload success
         const imageUrl = URL.createObjectURL(this._uploader.methods.getFile(id))
         const img = new Image()
