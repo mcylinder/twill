@@ -1029,6 +1029,8 @@ abstract class ModuleController extends Controller
                 } elseif (Str::endsWith($authorizableOptions[$option], '-item')) {
                     $authorized = $item ? $this->user->can($authorizableOptions[$option], $item) : $this->user->can(Str::replaceLast('-item', '-module', $authorizableOptions[$option]), $this->moduleName);
                 }
+            } else {
+                $authorized = array_key_exists($option, $this->defaultIndexOptions) ? true : $authorized;
             }
             return ($this->indexOptions[$option] ?? $this->defaultIndexOptions[$option] ?? false) && $authorized;
         });
