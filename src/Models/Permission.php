@@ -22,7 +22,7 @@ class Permission extends BaseModel
     {
         switch ($scope) {
             case 'global':
-                return ['edit-settings', 'edit-users', 'edit-user-role', 'edit-user-groups', 'manage-modules', 'access-media-library'];
+                return ['edit-settings', 'edit-users', 'edit-user-role', 'edit-user-groups', 'manage-modules', 'manage-collections', 'access-media-library', 'edit-media-library', 'upload-media-library'];
                 break;
             case 'module':
                 return ['view-module', 'edit-module', 'manage-module'];

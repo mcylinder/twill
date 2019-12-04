@@ -322,4 +322,8 @@
       display: none;
     }
   }
+
+  .hide-upload-media-library .uploader {
+    display: none;
+  }
 </style>

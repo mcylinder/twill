@@ -425,4 +425,8 @@
     margin-top: 32px;
     margin-bottom: 32px;
   }
+
+  .hide-edit-media-library .mediasidebar__form  {
+    display: none;
+  }
 </style>

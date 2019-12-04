@@ -30,8 +30,23 @@
     ])
 
     @formField('checkbox', [
+        'name' => 'manage-collections',
+        'label' => 'Manage All Collections'
+    ])
+
+    @formField('checkbox', [
         'name' => 'access-media-library',
         'label' => 'Access media library'
+    ])
+
+    @formField('checkbox', [
+        'name' => 'edit-media-library',
+        'label' => 'Edit media library'
+    ])
+
+    @formField('checkbox', [
+        'name' => 'upload-media-library',
+        'label' => 'Upload to media library'
     ])
 
     @component('twill::partials.form.utils._connected_fields', [

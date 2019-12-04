@@ -44,11 +44,15 @@
                 @partialView(($moduleName ?? null), 'navigation._breadcrumb')
                 @partialView(($moduleName ?? null), 'navigation._secondary_navigation')
             @endif
+@php
+    $hideUploadMediaLibrary = auth()->user()->can('upload-media-library') ? '' : 'hide-upload-media-library';
+    $hideEditMediaLibrary = auth()->user()->can('edit-media-library') ? '' : 'hide-edit-media-library';
+@endphp
             <section class="main">
                 <div class="app" id="app" v-cloak>
                     @yield('content')
                     @if (config('twill.enabled.media-library') || config('twill.enabled.file-library'))
-                        <a17-medialibrary ref="mediaLibrary"
+                        <a17-medialibrary ref="mediaLibrary" class="{{$hideUploadMediaLibrary.' '.$hideEditMediaLibrary}}"
                                           :authorized="{{ json_encode(auth('twill_users')->user()->can('access-media-library')) }}"
                                           :extra-metadatas="{{ json_encode(array_values(config('twill.media_library.extra_metadatas_fields', []))) }}"
                                           :translatable-metadatas="{{ json_encode(array_values(config('twill.media_library.translatable_metadatas_fields', []))) }}"

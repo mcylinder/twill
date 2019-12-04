@@ -65,9 +65,27 @@ class AuthServiceProvider extends ServiceProvider
             });
         });
 
+        Gate::define('manage-collections', function ($user) {
+            return $this->authorize($user, function ($user) {
+                return $user->role->permissions()->global()->where('name', 'manage-collections')->exists();
+            });
+        });
+
         Gate::define('access-media-library', function ($user) {
             return $this->authorize($user, function ($user) {
                 return $user->role->permissions()->global()->where('name', 'access-media-library')->exists();
+            });
+        });
+
+        Gate::define('edit-media-library', function ($user) {
+            return $this->authorize($user, function ($user) {
+                return $user->role->permissions()->global()->where('name', 'edit-media-library')->exists();
+            });
+        });
+
+        Gate::define('upload-media-library', function ($user) {
+            return $this->authorize($user, function ($user) {
+                return $user->role->permissions()->global()->where('name', 'upload-media-library')->exists();
             });
         });
 
